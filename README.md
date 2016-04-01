@@ -14,7 +14,7 @@ var smith = require("smithies"),
 
 smith.AWS.config(config);
 
-var bucket = new smith.s3.Bucket(config),
+var bucket = new smith.s3.Bucket("bucketname", config),
     email = new smith.ses.Email(config),
     queue = new smith.sqs.Queue(config),
     exec = new smith.lambda.Executor(config);
@@ -25,8 +25,7 @@ var bucket = new smith.s3.Bucket(config),
 S3 is Amazon's cloud drive.  Each "drive" is called a "bucket" and has a cloud-wide unique name.
 
 ```javascript
-var bucket = new smith.s3.Bucket(config);
-bucket.setBucket("bucket-fuckit");
+var bucket = new smith.s3.Bucket("bucket-fuckit", [config]);
 ```
 
 The `config` object contains options from the [AWS SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property).
@@ -78,7 +77,7 @@ Moves a file already on S3.
 SES is Amazon's scalable email dispatcher.  Once your owneership of an email or domain is established, you can send emails originating from that source and let Amazon handle the complications of making sure your message doesn't end up in spam.
 
 ```javascript
-var email = new smith.ses.Email(config);
+var email = new smith.ses.Email([config]);
 ```
 
 The `config` object contains options from the [AWS SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#constructor-property).
@@ -116,7 +115,7 @@ Uses [Juice](https://github.com/Automattic/juice) to inline styles in HTML conte
 SQS is Amazon's scalable queue service.  Queues are useful for implementing background processing at fixed or elastic scale.
 
 ```javascript
-var queue = new smith.ses.Queue(config);
+var queue = new smith.ses.Queue([config]);
 ```
 
 The `config` object contains options from the [AWS SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#constructor-property).
@@ -162,7 +161,7 @@ Combines the `receive` and `complete` methods.  Receives up to 10 messages from 
 Lambda is Amazon's function container service, a mini-environment that can provides horizontal scale to a single function.  When combined with SQS, it enables elastic scale background processing.
 
 ```javascript
-var exec = new smith.lambda.Executor(config);
+var exec = new smith.lambda.Executor([config]);
 ```
 
 The `config` object contains options from the [AWS SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Lambda.html#constructor-property).
