@@ -20,7 +20,7 @@ var bucket = new smith.s3.Bucket("bucketname", config),
     exec = new smith.lambda.Executor(config);
 ```
 
-## S3
+# S3
 
 S3 is Amazon's cloud drive.  Each "drive" is called a "bucket" and has a cloud-wide unique name.
 
@@ -72,7 +72,7 @@ Copy a file already on S3.
 
 Moves a file already on S3.
 
-## SES
+# SES
 
 SES is Amazon's scalable email dispatcher.  Once your owneership of an email or domain is established, you can send emails originating from that source and let Amazon handle the complications of making sure your message doesn't end up in spam.
 
@@ -110,7 +110,7 @@ Gets statistics on sent email.  Results are [like this](http://docs.aws.amazon.c
 
 Uses [Juice](https://github.com/Automattic/juice) to inline styles in HTML content.  CSS classes and external stylesheets do not work in certain email clients and websites (such as Gmail).
 
-## SQS
+# SQS
 
 SQS is Amazon's scalable queue service.  Queues are useful for implementing background processing at fixed or elastic scale.
 
@@ -156,7 +156,7 @@ Completes the processing of a message.
 
 Combines the `receive` and `complete` methods.  Receives up to 10 messages from the queue.  Each message will have a `complete` method to make processing easier.  Unlike the top-level `complete` method, a callback parameter is not required.
 
-## Lambda
+# Lambda
 
 Lambda is Amazon's function container service, a mini-environment that can provides horizontal scale to a single function.  When combined with SQS, it enables elastic scale background processing.
 
